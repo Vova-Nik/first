@@ -24,6 +24,7 @@ public class Welcome
 		System.out.println("Input a number: ");
 		System.out.println("11 Gallons to liters");
 		System.out.println("21 Distance by sound");
+		System.out.println("22 logical operations");
 
 
 		int num = in.nextInt();
@@ -40,6 +41,13 @@ public class Welcome
 				Shildt2_1 shildt2_1;
 				shildt2_1 = new Shildt2_1();
 				shildt2_1.displayInfo();
+			}
+
+			case 22 -> {
+				System.out.println("Case: 22");
+				Shildt2_2 shildt2_2;
+				shildt2_2 = new Shildt2_2();
+				shildt2_2.run();
 			}
 			default -> System.out.print("Case: default");
 		}
