@@ -25,6 +25,7 @@ public class Welcome
 		System.out.println("11 Gallons to liters");
 		System.out.println("21 Distance by sound");
 		System.out.println("22 logical operations");
+		System.out.println("23 Prime numbers 0...100");
 
 
 		int num = in.nextInt();
@@ -48,6 +49,13 @@ public class Welcome
 				Shildt2_2 shildt2_2;
 				shildt2_2 = new Shildt2_2();
 				shildt2_2.run();
+			}
+
+			case 23 -> {
+				System.out.println("Case: 23");
+				Shildt2_3 shildt2_3;
+				shildt2_3 = new Shildt2_3();
+				shildt2_3.run();
 			}
 			default -> System.out.print("Case: default");
 		}
