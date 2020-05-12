@@ -1,11 +1,11 @@
+import java.io.IOException;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Welcome
 {
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) throws IOException {
 		String greeting = "Welcome to my Core Java!";
 		System.out.println(greeting);
 		for(int i = 0; i < greeting.length(); i++)
@@ -26,7 +26,8 @@ public class Welcome
 		System.out.println("21 Distance by sound");
 		System.out.println("22 logical operations");
 		System.out.println("23 Prime numbers 0...100");
-		System.out.println("31 Switch-Case");
+		System.out.println("31 Array");
+		System.out.println("41 Switch-Case");
 
 
 		int num = in.nextInt();
@@ -61,6 +62,11 @@ public class Welcome
 				Shildt3_1 shildt3_1;
 				shildt3_1 = new Shildt3_1();
 				shildt3_1.run();
+			}
+			case 41 -> {
+				System.out.println("Case: 41");
+				Shildt4_1 shildt4_1 = new Shildt4_1();
+				shildt4_1.run();
 			}
 			default -> System.out.print("Case: default");
 		}
