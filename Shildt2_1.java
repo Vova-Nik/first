@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-//import java.util.Scanner;
 public class Shildt2_1 {
 
     void displayInfo() {
@@ -14,7 +13,7 @@ public class Shildt2_1 {
         double distance = num * SOUND_VELOCITY / 2;
         System.out.printf("%s", "\tdistance is\t");
         System.out.printf("%5.2f %s", distance, "meters\n");
-
+        in.close();
     }
 }
 
