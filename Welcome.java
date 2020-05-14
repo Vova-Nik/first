@@ -28,6 +28,8 @@ public class Welcome
 		System.out.println("23 Prime numbers 0...100");
 		System.out.println("31 Array");
 		System.out.println("41 Switch-Case");
+		System.out.println("71 factorial");
+		System.out.println("81 Classes");
 
 
 		int num = in.nextInt();
@@ -68,6 +70,19 @@ public class Welcome
 				Shildt4_1 shildt4_1 = new Shildt4_1();
 				shildt4_1.run();
 			}
+
+			case 71 -> {
+				System.out.println("Case: 71");
+				Shildt7_1 shildt7_1 = new Shildt7_1();
+				shildt7_1.run();
+			}
+
+			case 81 -> {
+				System.out.println("Case: 81");
+				Shildt8_1 shildt8_1 = new Shildt8_1();
+				shildt8_1.run();
+			}
+
 			default -> System.out.print("Case: default");
 		}
 
