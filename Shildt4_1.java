@@ -16,12 +16,12 @@ public class Shildt4_1 {
         System.out.println("Have got it!\n");
 
         switch (choice) {
-            case '1' -> {
+            case '1':
                 System.out.println("if: \n");
                 System.out.println("if(ycлoвиe) оператор;");
                 System.out.println("else оператор;");
-            }
-            case '2' -> {
+            break;
+            case '2':
                 System.out.println("switch:\n");
                 System.out.println("switсh (выражение) {");
                 System.out.println(" case константа:");
@@ -29,22 +29,22 @@ public class Shildt4_1 {
                 System.out.println(" break;");
                 System.out.println(" / / ... ");
                 System.out.println("}");
-            }
-            case '3' -> {
+                break;
+            case '3':
                 System.out.println("while:\n");
                 System.out.println("while(ycлoвиe) оператор;");
-            }
-            case '4' -> {
+                break;
+            case '4':
                 System.out.println("do-while:\n");
                 System.out.println("do {");
                 System.out.println(" оператор;");
                 System.out.println("} while (условие);");
-            }
-            case '5' -> {
+                break;
+            case '5':
                 System.out.println("for:\n");
                 System.out.print("for(инициaлизaция; условие; итерация)");
                 System.out.println(" оператор;");
-            }
+                break;
         }
     }
 }
