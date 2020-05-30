@@ -32,6 +32,7 @@ public class Welcome
 		System.out.println("71 factorial");
 		System.out.println("81 Classes");
 		System.out.println("91 Package");
+		System.out.println("110 Multythread");
 
 
 		int num = in.nextInt();
@@ -91,6 +92,12 @@ public class Welcome
 				System.out.println("Case: 91");
 					Chapter9 chapter9 = new Chapter9();
 					chapter9.run();
+				break;
+
+				case 110 :
+				System.out.println("Case: 110");
+					Chapter110 chapter110 = new Chapter110();
+					chapter110.exec();
 				break;
 
 
