@@ -3,6 +3,7 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import Chapt9.Chapter9;
+import Chapter111.Dispatch;
 
 public class Welcome
 {
@@ -33,6 +34,7 @@ public class Welcome
 		System.out.println("81 Classes");
 		System.out.println("91 Package");
 		System.out.println("110 Multythread");
+		System.out.println("111 Multythread Synchronized");
 
 
 		int num = in.nextInt();
@@ -98,6 +100,12 @@ public class Welcome
 				System.out.println("Case: 110");
 					Chapter110 chapter110 = new Chapter110();
 					chapter110.exec();
+				break;
+
+			case 111 :
+				System.out.println("Case: 111");
+				Dispatch ch111 = new Dispatch();
+				ch111.exec();
 				break;
 
 

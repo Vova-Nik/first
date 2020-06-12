@@ -1,32 +1,63 @@
 package Chapter111;
 
+import java.util.Scanner;
+
 public class Q {
-    int n;
-    boolean valueset = false;
+    int n=0;
+    int peacesInStore = 0;
+    int storeVol = 5;
+    boolean onInvent = false;
+    int got = 0;
+    int put = 0;
 
     synchronized int get(){
-        while(!valueset)
+        while(peacesInStore <= 0 || onInvent)
             try{
                 wait();
             }catch (InterruptedException e){
                 System.out.println("Exception" + "InterruptedException catched");
             }
-        System.out.println("Received: " + n);
-        valueset = false;
+        peacesInStore--;
+            got ++;
+        System.out.println("Received: "  + 1);
+        System.out.println("in store are: " + peacesInStore);
         notify();
         return n;
     }
 
     synchronized void put(int n){
-        while(valueset)
+        while(peacesInStore >= storeVol || onInvent)
             try {
                 wait();
             }catch(InterruptedException e){
                 System.out.println("Exception" + "InterruptedException catched");
             }
         this.n = n;
-        valueset = true;
-        System.out.println("Sent: " + n);
+            put ++;
+        peacesInStore++;
+        System.out.println("in store are: " + peacesInStore);
         notify();
+    }
+
+    synchronized void setToInventarization(){
+        onInvent =true;
+
+            System.out.println("Inventarization! There are " + peacesInStore + "pcs in store");
+            System.out.println("Inventarization! " + put + "pcs were put");
+            System.out.println("Inventarization! " + got + "pcs  were get");
+        while(onInvent) {
+            try{
+                wait();
+                System.out.println("waiting on Inventarization!");
+            }catch (InterruptedException e){
+                System.out.println("Exception" + "InterruptedException catched");
+            }
+        }
+        notify();
+    }
+
+   void setToWork(){
+        onInvent = false;
+       System.out.println("Inventarization. Set to work");
     }
 }

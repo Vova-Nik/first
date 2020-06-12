@@ -4,13 +4,19 @@ public class Producer implements Runnable {
     Q q;
     public Producer(Q q){
         this.q = q;
+        System.out.println("Producer started");
         new Thread(this, "Producer") .start();
     }
 
     public void run(){
-        int i=0;
+
         while(true){
-            q.put(i++);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+               q.put(1);
         }
     }
 
