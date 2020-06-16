@@ -16,8 +16,7 @@ public class Producer implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-               q.put(1);
+               q.put();
         }
     }
-
 }

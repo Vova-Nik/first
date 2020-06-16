@@ -10,6 +10,19 @@ public class Q {
     int got = 0;
     int put = 0;
 
+    public int getPeacesInStore() {
+        return peacesInStore;
+    }
+
+    public int getGot() {
+        return got;
+    }
+
+    public int getPut() {
+        return put;
+    }
+
+
     synchronized int get(){
         while(peacesInStore <= 0 || onInvent)
             try{
@@ -18,46 +31,42 @@ public class Q {
                 System.out.println("Exception" + "InterruptedException catched");
             }
         peacesInStore--;
-            got ++;
+        got ++;
         System.out.println("Received: "  + 1);
         System.out.println("in store are: " + peacesInStore);
         notify();
         return n;
     }
 
-    synchronized void put(int n){
+    synchronized void put(){
         while(peacesInStore >= storeVol || onInvent)
             try {
                 wait();
             }catch(InterruptedException e){
                 System.out.println("Exception" + "InterruptedException catched");
             }
-        this.n = n;
-            put ++;
+        put++;
         peacesInStore++;
         System.out.println("in store are: " + peacesInStore);
         notify();
     }
 
-    synchronized void setToInventarization(){
+    void setToInventarization(){
         onInvent =true;
 
-            System.out.println("Inventarization! There are " + peacesInStore + "pcs in store");
-            System.out.println("Inventarization! " + put + "pcs were put");
-            System.out.println("Inventarization! " + got + "pcs  were get");
-        while(onInvent) {
-            try{
-                wait();
-                System.out.println("waiting on Inventarization!");
-            }catch (InterruptedException e){
-                System.out.println("Exception" + "InterruptedException catched");
-            }
-        }
-        notify();
+//        while(onInvent) {
+//            try{
+//                wait();
+//                System.out.println("waiting on Inventarization!");
+//            }catch (InterruptedException e){
+//                System.out.println("Exception" + "InterruptedException cached");
+//            }
+//       }
+        //notify();
     }
 
    void setToWork(){
         onInvent = false;
-       System.out.println("Inventarization. Set to work");
+
     }
 }
