@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import Chapt9.Chapter9;
 import Chapter111.Dispatch;
+import Chapter12.StudyAnnotations;
 
 public class Welcome
 {
@@ -35,6 +36,7 @@ public class Welcome
 		System.out.println("91 Package");
 		System.out.println("110 Multythread");
 		System.out.println("111 Multythread Synchronized");
+		System.out.println("112 Annotations");
 
 
 		int num = in.nextInt();
@@ -108,6 +110,11 @@ public class Welcome
 				ch111.exec();
 				break;
 
+			case 112 :
+				System.out.println("Case: 112");
+				StudyAnnotations ch112 = new StudyAnnotations();
+				ch112.exec();
+				break;
 
 
 			default :
