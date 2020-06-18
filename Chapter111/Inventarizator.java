@@ -1,42 +1,79 @@
 package Chapter111;
 
-import java.util.Scanner;
-
-public class Inventarizator implements Runnable{
+public class Inventarizator implements Runnable {
     static boolean created = false;
     Q q;
-    Inventarizator(Q q){
-        if(created){
+    Thread thread;
+    boolean terminate = false;
+
+
+    byte state = 0; //00000000 - normal,  00000001 - performing, 00000011 - performed
+    char keyPressed = ' ';
+
+    Inventarizator(Q q) {
+        if (created) {
             return;
         }
         created = true;
         this.q = q;
-        new Thread(this, "Inventarizator") .start();
-    }
-    public void run(){
-        while(true){
+        thread = new Thread(this, "Inventarizator");
+        thread.start();
 
+    }
+
+    public void run() {
+        while (!terminate) {
             try {
-                Thread.sleep(8000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            q.setToInventarization();
-            System.out.println("Inventarization!!!!!!!!!!!!!");
-            System.out.println("Inventarization! There are " + q.getPeacesInStore() + "pcs in store");
-            System.out.println("Inventarization! " + q.getPut() + "pcs were put");
-            System.out.println("Inventarization! " + q.getGot() + "pcs  were got");
+            if (state == 10)
+                return;
+        }
+        System.out.println("Inventarizator terminated");
+    }
 
+    boolean perform() {
+
+        q.serviceRequestProcessor(Q.actions.TO_INVENT, "cooolInventarizator");
+        System.out.println("Inventarization!!!!!!!!!!!!!");
+        System.out.println("Inventarization! There are " + q.getPiecesInStore() + "pcs in store");
+        System.out.println("Inventarization! " + q.getPut() + "pcs were put");
+        System.out.println("Inventarization! " + q.getGot() + "pcs  were got");
+        System.out.println("Inventarization! " + q.getNotServedGetRequests() + " req. not served");
+
+//        while (state == 2) {
 //            try {
-//                Thread.sleep(4000);
+//                Thread.sleep(100);
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
+//        }
 
-            System.out.println("Inventarization. Set to work");
-            q.setToWork();
+        return true;
+    }
 
+    boolean keyPressed(int key){
+        System.out.println("Inventarization: key got. Key == " + key);
+        if(key==1&&state==0) {
+            perform();
+            state = 3;
+            return true;
         }
+
+        if(key==2&&state==3) {
+            q.serviceRequestProcessor(Q.actions.TO_WORK, "cooolInventarizator");
+            state = 0;
+            return true;
+        }
+        return true;
+    }
+
+    boolean stopYorself(){
+        terminate = true;
+        return true;
     }
 }
+

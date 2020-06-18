@@ -23,7 +23,8 @@ public class Welcome
 		SimpleDateFormat timeOnly = new SimpleDateFormat("HH:mm:ss");
 		System.out.println(timeOnly.format(cal.getTime()));
 
-		Scanner in = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("Input a number: ");
 		System.out.println("11 Gallons to liters");
 		System.out.println("21 Distance by sound");
@@ -39,7 +40,7 @@ public class Welcome
 		System.out.println("112 Annotations");
 
 
-		int num = in.nextInt();
+		int num = scanner.nextInt();
 		switch (num) {
 			case 0:
 				System.out.print("Case: 0");
@@ -106,8 +107,10 @@ public class Welcome
 
 			case 111 :
 				System.out.println("Case: 111");
+				//Dispatch ch111 = new Dispatch();
 				Dispatch ch111 = new Dispatch();
 				ch111.exec();
+				System.out.println("Case: 111 broken!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				break;
 
 			case 112 :
@@ -122,7 +125,7 @@ public class Welcome
 		}
 
 
-		in.close();
+		scanner.close();
 	}
 }
 
